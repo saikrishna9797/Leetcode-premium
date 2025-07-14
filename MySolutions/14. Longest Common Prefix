@@ -1,0 +1,38 @@
+bool comp(string s1,string s2)
+{
+    return s1.size()<s2.size();
+}
+
+class Solution {
+public:
+
+    string longestCommonPrefix(vector<string>& strs) {
+        
+        int n = strs.size();
+
+        sort(strs.begin(),strs.end());
+
+        // for(auto ele:strs)
+        // {
+        //     cout<<ele<<" ";
+        // }
+
+        string ans = "";
+
+        int p1 = 0,p2 = 0;
+        int n1 = strs[0].size(), n2 = strs[n-1].size();
+
+        while(p1<n1 && p2<n2)
+        {
+            if(strs[0][p1] == strs[n-1][p2])
+            {
+                ans += strs[0][p1];
+                p1 += 1;
+                p2 += 1;
+            }
+            else break;
+        }
+
+        return ans;
+    }
+};
