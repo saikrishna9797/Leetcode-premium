@@ -1,0 +1,88 @@
+class Solution {
+public:
+    string intToRoman(int num) {
+        string ans = "";
+
+        int cnt = num/1000;
+
+        while(cnt--)
+        {
+            ans += 'M';
+        }
+
+        num = num%1000;
+
+        cnt = num/100;
+
+        if(cnt == 9)
+        {
+            ans += "CM";
+            num = num%100;
+        }
+        else if(cnt == 4)
+        {
+            ans += "CD";
+            num = num%100;
+        }
+        else
+        {
+            cnt = num/500;
+
+            while(cnt--)ans += "D";
+            num = num%500;
+
+            cnt = num/100;
+
+            while(cnt--)ans += "C";
+
+            num = num%100;
+        }
+
+        // cout<<"hi";
+
+        cnt = num/10;
+
+        if(cnt == 9){
+            ans += "XC";
+            num = num%10;
+        }
+        else if(cnt == 4)
+        {
+            ans += "XL";
+            num = num%10;
+        }
+        else
+        {
+            cnt = num/50;
+
+            while(cnt--)ans += "L";
+            num = num%50;
+
+            cnt = num/10;
+
+            while(cnt--)ans += "X";
+            num = num%10;
+        }
+
+        // cout<<"hi";
+        // cout<<num;
+        
+        if(num == 9)
+        {
+            ans += "IX";
+        }
+        else if(num == 4)ans += "IV";
+        else
+        {
+            cnt = num/5;
+
+            while(cnt--)ans += "V";
+            num = num%5;
+
+            cnt = num;
+            while(cnt--)ans += "I";
+        }
+
+        return ans;
+    }
+};
